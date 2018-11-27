@@ -25,10 +25,16 @@ export class ComparisonMatrix<T> {
 	}
 
 	public get (a: T, b: T): Comparison | null {
+		if (!this.has(a, b)) {
+			throw new RangeError('Could not get with these indexes');
+		}
 		return this.matrix.get(a)!.get(b)!;
 	}
 
 	public set (a: T, b: T, value: Comparison): void {
+		if (!this.has(a, b)) {
+			throw new RangeError('Could not set with these indexes');
+		}
 		this.updateSingle(a, b, value);
 		this.updateSingle(b, a, getOpposite(value));
 	}
