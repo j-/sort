@@ -20,10 +20,12 @@ export class ComparisonMatrix<T> {
 		}
 	}
 
+	/** Returns `true` if the given indexes are within the matrix. */
 	public has (a: T, b: T): boolean {
 		return this.matrix.has(a) && this.matrix.get(a)!.has(b);
 	}
 
+	/** Return the comparison value (or `null`) at these indexes. */
 	public get (a: T, b: T): Comparison | null {
 		if (!this.has(a, b)) {
 			throw new RangeError('Could not get with these indexes');
@@ -31,6 +33,7 @@ export class ComparisonMatrix<T> {
 		return this.matrix.get(a)!.get(b)!;
 	}
 
+	/** Set the comparison value (not `null`) at these indexes. */
 	public set (a: T, b: T, value: Comparison): void {
 		if (!this.has(a, b)) {
 			throw new RangeError('Could not set with these indexes');
