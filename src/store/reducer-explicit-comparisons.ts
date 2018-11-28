@@ -36,7 +36,7 @@ export const isExplicitComparison = (state: ReducerState, a: string, b: string) 
 
 export const isLastExplicitComparison = (state: ReducerState, a: string, b: string) => {
 	const comparison = state[state.length - 1];
-	return (
+	return comparison && (
 		comparison[0] === a &&
 		comparison[1] === b
 	);
