@@ -1,4 +1,5 @@
 import * as React from 'react';
+import ComparisonTableHeaderCell from './ComparisonTableHeaderCell';
 import ComparisonTableDataCell from '../containers/ComparisonTableDataCell';
 import './ComparisonTable.css';
 
@@ -13,11 +14,9 @@ const ComparisonTable: React.StatelessComponent<Props> = ({ list }) => (
 				<td />
 				{
 					list.map((b) => (
-						<th className="ComparisonTable-b" key={b}>
-							<div className="ComparisonTable-b-container">
-								<span className="ComparisonTable-b-text">{b}</span>
-							</div>
-						</th>
+						<ComparisonTableHeaderCell vertical={true} key={b}>
+							{b}
+						</ComparisonTableHeaderCell>
 					))
 				}
 			</tr>
@@ -26,11 +25,9 @@ const ComparisonTable: React.StatelessComponent<Props> = ({ list }) => (
 			{
 				list.map((a) => (
 					<tr key={a}>
-						<th className="ComparisonTable-a">
-							<div className="ComparisonTable-a-container">
-								<span className="ComparisonTable-a-text">{a}</span>
-							</div>
-						</th>
+						<ComparisonTableHeaderCell>
+							{a}
+						</ComparisonTableHeaderCell>
 						{
 							list.map((b) => (
 								<ComparisonTableDataCell key={b} a={a} b={b} />

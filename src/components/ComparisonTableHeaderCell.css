@@ -1,0 +1,24 @@
+.ComparisonTableHeaderCell-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.ComparisonTableHeaderCell--horizontal .ComparisonTableHeaderCell-container {
+	flex-direction: row;
+}
+
+.ComparisonTableHeaderCell--vertical .ComparisonTableHeaderCell-container {
+	flex-direction: column;
+}
+
+.ComparisonTableHeaderCell-text {
+	display: inline-block;
+	text-align: right;
+}
+
+.ComparisonTableHeaderCell--vertical .ComparisonTableHeaderCell-text {
+	writing-mode: vertical-rl;
+}
