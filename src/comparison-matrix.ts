@@ -56,27 +56,14 @@ export class ComparisonMatrix<T> implements ComparisonStore<T> {
 	private updateTransitive (a: T, b: T, value: Comparison): void {
 		const { items } = this;
 		const cAB = value;
-		if (cAB === Comparison.EQ) {
-			for (let c of items) {
-				const cBC = this.get(b, c);
-				if (cBC === null) {
-					continue;
-				}
-				const cAC = this.get(a, c);
-				if (cAC === null) {
-					this.updateSingle(a, c, cBC);
-				}
+		for (let c of items) {
+			const cBC = this.get(b, c);
+			if (cBC === null) {
+				continue;
 			}
-		} else {
-			for (let c of items) {
-				const cBC = this.get(b, c);
-				if (cBC === null) {
-					continue;
-				}
-				const cAC = this.get(a, c);
-				if (cAC === null && (cAB === cBC || cBC === Comparison.EQ)) {
-					this.updateSingle(a, c, cAB);
-				}
+			const cAC = this.get(a, c);
+			if (cAC === null && (cAB === cBC || cAB === Comparison.EQ || cBC === Comparison.EQ)) {
+				this.updateSingle(a, c, cAB);
 			}
 		}
 	}
