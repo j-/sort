@@ -41,15 +41,18 @@ export class ComparisonMatrix<T> {
 			throw new SyntaxError('Could not change implied equality');
 		}
 		this.updateSingle(a, b, value);
-		this.updateSingle(b, a, getOpposite(value));
 	}
 
-	private updateSingle (a: T, b: T, value: Comparison | null): void {
-		this.matrix.get(a)!.set(b, value);
-		this.updateTransitive(a, b, value);
+	private updateSingle (a: T, b: T, value: Comparison): void {
+		const cAB = value;
+		const cBA = getOpposite(value);
+		this.matrix.get(a)!.set(b, cAB);
+		this.matrix.get(b)!.set(a, cBA);
+		this.updateTransitive(a, b, cAB);
+		this.updateTransitive(b, a, cBA);
 	}
 
-	private updateTransitive (a: T, b: T, value: Comparison | null): void {
+	private updateTransitive (a: T, b: T, value: Comparison): void {
 		const { items } = this;
 		const cAB = value;
 		if (cAB === Comparison.EQ) {
