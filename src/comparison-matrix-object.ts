@@ -1,20 +1,13 @@
 import { Comparison } from './comparison';
 import { ComparisonMatrix } from './comparison-matrix';
+import { ComparisonData } from './comparison-data';
 
 export class ComparisonMatrixObject extends ComparisonMatrix<string> {
-	private readonly grid: Record<string, Record<string, Comparison | null>>;
+	private grid: ComparisonData;
 
-	constructor (items: string[]) {
+	constructor (items: string[], grid: ComparisonData) {
 		super(items);
-		this.grid = {};
-		for (let a of items) {
-			const objA = {};
-			for (let b of items) {
-				objA[b] = null;
-			}
-			objA[a] = Comparison.EQ;
-			this.grid[a] = objA;
-		}
+		this.grid = grid;
 	}
 
 	protected hasValue (a: string, b: string): boolean {
@@ -29,7 +22,13 @@ export class ComparisonMatrixObject extends ComparisonMatrix<string> {
 	}
 
 	protected setValue (a: string, b: string, value: Comparison): void {
-		this.grid[a][b] = value;
+		this.grid = {
+			...this.grid,
+			[a]: {
+				...this.grid[a],
+				[b]: value,
+			},
+		};
 	}
 
 	public getData () {

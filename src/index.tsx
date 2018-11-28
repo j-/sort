@@ -8,8 +8,17 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import './index.css';
+import { setList, setLT, setGT } from './store/actions';
 
 const store = createStore(rootReducer, composeWithDevTools());
+store.dispatch(setList(['good', 'best', 'better', 'worst', 'worse']));
+store.dispatch(setLT('good', 'better'));
+store.dispatch(setLT('worse', 'better'));
+store.dispatch(setLT('worst', 'better'));
+store.dispatch(setGT('best', 'better'));
+store.dispatch(setLT('worse', 'good'));
+store.dispatch(setLT('worst', 'good'));
+store.dispatch(setGT('worse', 'worst'));
 
 ReactDOM.render(
 	<StoreProvider store={store}>
