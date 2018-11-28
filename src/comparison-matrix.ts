@@ -53,12 +53,18 @@ export class ComparisonMatrix<T> {
 		const { items } = this;
 		if (this.get(a, b) === Comparison.EQ) {
 			for (let c of items) {
+				if (this.get(b, c) === null) {
+					continue;
+				}
 				if (this.get(a, c) === null) {
 					this.updateSingle(a, c, this.get(b, c));
 				}
 			}
 		} else {
 			for (let c of items) {
+				if (this.get(b, c) === null) {
+					continue;
+				}
 				if (this.get(a, c) === null && ((this.get(a, b) === this.get(b, c)) || (this.get(b, c) === Comparison.EQ))) {
 					this.updateSingle(a, c, this.get(a, b));
 				}
