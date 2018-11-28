@@ -27,7 +27,7 @@ export default class ComparisonTable extends React.Component {
 								<th>{a}</th>
 								{
 									items.map((b) => (
-										<td key={b}>
+										<td key={b} className={a === b ? 'table-secondary' : ''}>
 											<ComparisonResult comparison={matrix.get(a, b)} />
 										</td>
 									))
