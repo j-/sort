@@ -1,0 +1,11 @@
+.ComparisonTableDataCell--is-equal {
+	background-color: #eee;
+}
+
+.ComparisonTableDataCell--is-explicit {
+	background-color: hsl(200, 80%, 80%);
+}
+
+.ComparisonTableDataCell--is-last {
+	background-color: hsl(200, 80%, 60%);
+}

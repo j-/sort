@@ -1,6 +1,8 @@
 import * as React from 'react';
+import * as classNames from 'classnames';
 import { Comparison } from '../comparison';
 import ComparisonResult from './ComparisonResult';
+import './ComparisonTableDataCell.css';
 
 export interface Props {
 	a: string;
@@ -17,7 +19,11 @@ const ComparisonTableDataCell: React.StatelessComponent<Props> = ({
 	isExplicit,
 	isLast,
 }) => (
-	<td className={a === b ? 'table-secondary' : isLast ? 'table-success' : isExplicit ? 'table-primary' : ''}>
+	<td className={classNames('ComparisonTableDataCell', {
+		'ComparisonTableDataCell--is-equal': a === b,
+		'ComparisonTableDataCell--is-last': isLast,
+		'ComparisonTableDataCell--is-explicit': isExplicit,
+	})}>
 		<ComparisonResult comparison={comparison} />
 	</td>
 );
