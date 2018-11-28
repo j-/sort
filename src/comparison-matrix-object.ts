@@ -2,13 +2,10 @@ import { Comparison } from './comparison';
 import { ComparisonMatrix } from './comparison-matrix';
 
 export class ComparisonMatrixObject extends ComparisonMatrix<string> {
-	private readonly items: string[];
-
 	private readonly grid: Record<string, Record<string, Comparison | null>>;
 
 	constructor (items: string[]) {
-		super();
-		this.items = items;
+		super(items);
 		this.grid = {};
 		for (let a of items) {
 			const objA = {};
@@ -33,9 +30,5 @@ export class ComparisonMatrixObject extends ComparisonMatrix<string> {
 
 	protected setValue (a: string, b: string, value: Comparison): void {
 		this.grid[a][b] = value;
-	}
-
-	protected getItems (): string[] {
-		return this.items;
 	}
 }

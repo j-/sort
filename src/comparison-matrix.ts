@@ -2,10 +2,15 @@ import { Comparison, getOpposite } from './comparison';
 
 /** @see https://github.com/leonid-shevtsov/monkeysort/blob/gh-pages/monkey_sort.js */
 export abstract class ComparisonMatrix<T> {
+	private readonly items: T[];
+
 	protected abstract hasValue (a: T, b: T): boolean;
 	protected abstract getValue (a: T, b: T): Comparison | null;
 	protected abstract setValue (a: T, b: T, value: Comparison): void;
-	protected abstract getItems (): T[];
+
+	constructor (items: T[]) {
+		this.items = items;
+	}
 
 	/** Returns `true` if the given indexes are within the matrix. */
 	public has (a: T, b: T): boolean {
@@ -28,6 +33,11 @@ export abstract class ComparisonMatrix<T> {
 			throw new SyntaxError('Could not change implied equality');
 		}
 		this.updateSingle(a, b, value);
+	}
+
+	/** Returns the original list to sort. */
+	public getItems (): T[] {
+		return this.items;
 	}
 
 	private updateSingle (a: T, b: T, cAB: Comparison): void {
