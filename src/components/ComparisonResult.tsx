@@ -9,9 +9,9 @@ const ComparisonResult: React.StatelessComponent<Props> = ({ comparison }) => (
 	<>
 		{
 			comparison === null ? null :
-			comparison === Comparison.LT ? '<' :
-			comparison === Comparison.GT ? '>' :
-			'='
+			comparison === Comparison.LT ? '\uff1c' :
+			comparison === Comparison.GT ? '\uff1e' :
+			'\uff1d'
 		}
 	</>
 );
