@@ -68,3 +68,16 @@ it('sets B = A when setting A = B', () => {
 	matrix.set('a', 'b', Comparison.EQ);
 	expect(matrix.get('b', 'a')).toBe(Comparison.EQ);
 });
+
+it('sets B < A when setting A > B', () => {
+	const matrix = new ComparisonMatrix(['a', 'b', 'c']);
+	matrix.set('a', 'b', Comparison.GT);
+	expect(matrix.get('b', 'a')).toBe(Comparison.LT);
+});
+
+it('sets C < A when setting A > B > C', () => {
+	const matrix = new ComparisonMatrix(['a', 'b', 'c']);
+	matrix.set('a', 'b', Comparison.GT);
+	matrix.set('b', 'c', Comparison.GT);
+	expect(matrix.get('c', 'a')).toBe(Comparison.LT);
+});
