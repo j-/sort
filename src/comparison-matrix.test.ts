@@ -88,3 +88,31 @@ it('sets A > C when setting A > B > C', () => {
 	matrix.set('b', 'c', Comparison.GT);
 	expect(matrix.get('a', 'c')).toBe(Comparison.GT);
 });
+
+it('returns expected results for example scenario', () => {
+	const matrix = new ComparisonMatrix(['good', 'best', 'better', 'worst', 'worse']);
+	matrix.set('good', 'better', Comparison.LT);
+	matrix.set('worse', 'better', Comparison.LT);
+	matrix.set('worst', 'better', Comparison.LT);
+	matrix.set('best', 'better', Comparison.GT);
+	matrix.set('worse', 'good', Comparison.LT);
+	matrix.set('worst', 'good', Comparison.LT);
+	matrix.set('worse', 'worst', Comparison.GT);
+	expect(matrix.get('best', 'better')).toBe(Comparison.GT);
+	expect(matrix.get('better', 'good')).toBe(Comparison.GT);
+	expect(matrix.get('good', 'worse')).toBe(Comparison.GT);
+	expect(matrix.get('worse', 'worst')).toBe(Comparison.GT);
+});
+
+it('returns expected results for example "don\'t care" scenario', () => {
+	const matrix = new ComparisonMatrix(['good', 'best', 'better', 'worst', 'worse']);
+	matrix.set('good', 'better', Comparison.EQ);
+	matrix.set('worse', 'better', Comparison.EQ);
+	matrix.set('best', 'better', Comparison.EQ);
+	matrix.set('worst', 'better', Comparison.EQ);
+	matrix.set('good', 'best', Comparison.EQ);
+	expect(matrix.get('best', 'good')).toBe(Comparison.EQ);
+	expect(matrix.get('good', 'better')).toBe(Comparison.EQ);
+	expect(matrix.get('better', 'worst')).toBe(Comparison.EQ);
+	expect(matrix.get('worst', 'worse')).toBe(Comparison.EQ);
+});
