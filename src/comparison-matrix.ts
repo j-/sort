@@ -37,6 +37,8 @@ export class ComparisonMatrix<T> {
 	public set (a: T, b: T, value: Comparison): void {
 		if (!this.has(a, b)) {
 			throw new RangeError('Could not set with these indexes');
+		} else if (a === b) {
+			throw new SyntaxError('Could not change implied equality');
 		}
 		this.updateSingle(a, b, value);
 		this.updateSingle(b, a, getOpposite(value));
