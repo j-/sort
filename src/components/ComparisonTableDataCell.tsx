@@ -23,6 +23,8 @@ const ComparisonTableDataCell: React.StatelessComponent<Props> = ({
 		'ComparisonTableDataCell--is-equal': a === b,
 		'ComparisonTableDataCell--is-last': isLast,
 		'ComparisonTableDataCell--is-explicit': isExplicit,
+		'ComparisonTableDataCell--is-implicit': !isExplicit && comparison,
+		'ComparisonTableDataCell--is-empty': comparison === null,
 	})}>
 		<ComparisonResult comparison={comparison} />
 	</td>
