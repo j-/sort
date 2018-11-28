@@ -31,4 +31,8 @@ export class ComparisonMatrixObject extends ComparisonMatrix<string> {
 	protected setValue (a: string, b: string, value: Comparison): void {
 		this.grid[a][b] = value;
 	}
+
+	public getData () {
+		return this.grid;
+	}
 }
