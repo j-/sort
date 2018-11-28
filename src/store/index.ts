@@ -1,49 +1,25 @@
-import { Reducer } from 'redux';
-import { ComparisonData, initialize } from '../comparison-data';
-import { isActionSetList, isActionSetComparison } from './actions';
-import { ComparisonMatrixObject } from '../comparison-matrix-object';
+import { combineReducers } from 'redux';
+import * as comparisonData from './reducer-comparison-data';
+import * as explicitComparisons from './reducer-explicit-comparisons';
 
 export interface RootReducerState {
-	unsortedList: string[];
-	comparisonData: ComparisonData;
+	comparisonData: comparisonData.ReducerState;
+	explicitComparisons: explicitComparisons.ReducerState;
 }
 
-const DEFAULT_STATE: RootReducerState = {
-	unsortedList: [],
-	comparisonData: {},
-};
-
-const reducer: Reducer<RootReducerState> = (state = DEFAULT_STATE, action) => {
-	if (isActionSetList(action)) {
-		const { list } = action.data;
-		return {
-			...state,
-			unsortedList: list,
-			comparisonData: initialize(list),
-		};
-	}
-
-	if (isActionSetComparison(action)) {
-		const { a, b, value } = action.data;
-		const list = state.unsortedList;
-		const data = state.comparisonData;
-		const matrix = new ComparisonMatrixObject(list, data);
-		matrix.set(a, b, value);
-		return {
-			...state,
-			comparisonData: matrix.getData(),
-		};
-	}
-
-	return state;
-};
-
-export default reducer;
+export default combineReducers<RootReducerState>({
+	comparisonData: comparisonData.default,
+	explicitComparisons: explicitComparisons.default,
+});
 
 export const getUnsortedListItems = (state: RootReducerState) => (
-	state.unsortedList
+	comparisonData.getUnsortedListItems(state.comparisonData)
 );
 
 export const getComparisonData = (state: RootReducerState) => (
-	state.comparisonData
+	comparisonData.getComparisonData(state.comparisonData)
+);
+
+export const isExplicitComparison = (state: RootReducerState, a: string, b: string) => (
+	explicitComparisons.isExplicitComparison(state.explicitComparisons, a, b)
 );
