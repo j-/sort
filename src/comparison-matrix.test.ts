@@ -56,3 +56,15 @@ it('initializes 3x3 with EQ tokens', () => {
 	expect(matrix.get('c', 'a')).toBe(null);
 	expect(matrix.get('c', 'b')).toBe(null);
 });
+
+it('can set A = B', () => {
+	const matrix = new ComparisonMatrix(['a', 'b', 'c']);
+	matrix.set('a', 'b', Comparison.EQ);
+	expect(matrix.get('a', 'b')).toBe(Comparison.EQ);
+});
+
+it('sets B = A when setting A = B', () => {
+	const matrix = new ComparisonMatrix(['a', 'b', 'c']);
+	matrix.set('a', 'b', Comparison.EQ);
+	expect(matrix.get('b', 'a')).toBe(Comparison.EQ);
+});
