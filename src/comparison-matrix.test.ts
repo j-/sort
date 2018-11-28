@@ -81,3 +81,10 @@ it('sets C < A when setting A > B > C', () => {
 	matrix.set('b', 'c', Comparison.GT);
 	expect(matrix.get('c', 'a')).toBe(Comparison.LT);
 });
+
+xit('sets A > C when setting A > B > C', () => {
+	const matrix = new ComparisonMatrix(['a', 'b', 'c']);
+	matrix.set('a', 'b', Comparison.GT);
+	matrix.set('b', 'c', Comparison.GT);
+	expect(matrix.get('a', 'c')).toBe(Comparison.GT);
+});
