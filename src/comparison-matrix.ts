@@ -46,27 +46,32 @@ export class ComparisonMatrix<T> {
 
 	private updateSingle (a: T, b: T, value: Comparison | null): void {
 		this.matrix.get(a)!.set(b, value);
-		this.updateTransitive(a, b);
+		this.updateTransitive(a, b, value);
 	}
 
-	private updateTransitive (a: T, b: T): void {
+	private updateTransitive (a: T, b: T, value: Comparison | null): void {
 		const { items } = this;
-		if (this.get(a, b) === Comparison.EQ) {
+		const cAB = value;
+		if (cAB === Comparison.EQ) {
 			for (let c of items) {
-				if (this.get(b, c) === null) {
+				const cBC = this.get(b, c);
+				if (cBC === null) {
 					continue;
 				}
-				if (this.get(a, c) === null) {
-					this.updateSingle(a, c, this.get(b, c));
+				const cAC = this.get(a, c);
+				if (cAC === null) {
+					this.updateSingle(a, c, cBC);
 				}
 			}
 		} else {
 			for (let c of items) {
-				if (this.get(b, c) === null) {
+				const cBC = this.get(b, c);
+				if (cBC === null) {
 					continue;
 				}
-				if (this.get(a, c) === null && ((this.get(a, b) === this.get(b, c)) || (this.get(b, c) === Comparison.EQ))) {
-					this.updateSingle(a, c, this.get(a, b));
+				const cAC = this.get(a, c);
+				if (cAC === null && (cAB === cBC || cBC === Comparison.EQ)) {
+					this.updateSingle(a, c, cAB);
 				}
 			}
 		}
