@@ -1,7 +1,8 @@
 import { Comparison, getOpposite } from './comparison';
+import { ComparisonStore } from './comparison-store';
 
 /** @see https://github.com/leonid-shevtsov/monkeysort/blob/gh-pages/monkey_sort.js */
-export class ComparisonMatrix<T> {
+export class ComparisonMatrix<T> implements ComparisonStore<T> {
 	private readonly items: T[];
 
 	/** 2D matrix indexed by `T` storing `Comparison` results. */
