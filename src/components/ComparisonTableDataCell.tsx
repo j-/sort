@@ -7,6 +7,7 @@ export interface Props {
 	b: string;
 	comparison: Comparison | null;
 	isExplicit: boolean;
+	isLast: boolean;
 }
 
 const ComparisonTableDataCell: React.StatelessComponent<Props> = ({
@@ -14,8 +15,9 @@ const ComparisonTableDataCell: React.StatelessComponent<Props> = ({
 	b,
 	comparison,
 	isExplicit,
+	isLast,
 }) => (
-	<td className={a === b ? 'table-secondary' : isExplicit ? 'table-primary' : ''}>
+	<td className={a === b ? 'table-secondary' : isLast ? 'table-success' : isExplicit ? 'table-primary' : ''}>
 		<ComparisonResult comparison={comparison} />
 	</td>
 );

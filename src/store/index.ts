@@ -23,3 +23,7 @@ export const getComparison = (state: RootReducerState, a: string, b: string) => 
 export const isExplicitComparison = (state: RootReducerState, a: string, b: string) => (
 	explicitComparisons.isExplicitComparison(state.explicitComparisons, a, b)
 );
+
+export const isLastExplicitComparison = (state: RootReducerState, a: string, b: string) => (
+	explicitComparisons.isLastExplicitComparison(state.explicitComparisons, a, b)
+);
