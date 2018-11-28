@@ -1,0 +1,34 @@
+.ComparisonTable {
+	table-layout: fixed;
+}
+
+.ComparisonTable-a-container,
+.ComparisonTable-b-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.ComparisonTable-a-container {
+	flex-direction: row;
+}
+
+.ComparisonTable-b-container {
+	flex-direction: column;
+}
+
+.ComparisonTable-a-text,
+.ComparisonTable-b-text {
+	display: inline-block;
+	text-align: right;
+}
+
+.ComparisonTable-b-text {
+	writing-mode: vertical-rl;
+}
+
+.ComparisonTable td {
+	text-align: center;
+}
