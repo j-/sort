@@ -44,6 +44,6 @@ export const getUnsortedListItems = (state: ReducerState) => (
 	state.unsortedList
 );
 
-export const getComparisonData = (state: ReducerState) => (
-	state.comparisonData
+export const getComparison = (state: ReducerState, a: string, b: string) => (
+	state.comparisonData[a][b]
 );

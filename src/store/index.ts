@@ -16,8 +16,8 @@ export const getUnsortedListItems = (state: RootReducerState) => (
 	comparisonData.getUnsortedListItems(state.comparisonData)
 );
 
-export const getComparisonData = (state: RootReducerState) => (
-	comparisonData.getComparisonData(state.comparisonData)
+export const getComparison = (state: RootReducerState, a: string, b: string) => (
+	comparisonData.getComparison(state.comparisonData, a, b)
 );
 
 export const isExplicitComparison = (state: RootReducerState, a: string, b: string) => (
