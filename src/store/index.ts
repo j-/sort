@@ -43,3 +43,7 @@ export default reducer;
 export const getUnsortedListItems = (state: RootReducerState) => (
 	state.unsortedList
 );
+
+export const getComparisonData = (state: RootReducerState) => (
+	state.comparisonData
+);

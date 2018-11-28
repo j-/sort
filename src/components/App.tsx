@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ComparisonTable from './ComparisonTable';
+import ComparisonTable from '../containers/ComparisonTable';
 import UnsortedList from '../containers/UnsortedList';
 
 const App: React.StatelessComponent = () => (

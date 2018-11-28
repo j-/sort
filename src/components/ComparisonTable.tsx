@@ -1,42 +1,45 @@
 import * as React from 'react';
-import { ComparisonMatrixMap } from '../comparison-matrix-map';
+import { ComparisonMatrixObject } from '../comparison-matrix-object';
+import { ComparisonData } from '../comparison-data';
 import ComparisonResult from './ComparisonResult';
 
-export default class ComparisonTable extends React.Component {
-	private items: string[] = ['a', 'b', 'c'];
-	private matrix = new ComparisonMatrixMap(this.items);
+export interface Props {
+	list: string[];
+	data: ComparisonData;
+}
 
-	render () {
-		const { items, matrix } = this;
-		return (
-			<table className="table table-borderless">
-				<thead>
-					<tr>
-						<td />
-						{
-							items.map((b) => (
-								<th key={b}>{b}</th>
-							))
-						}
-					</tr>
-				</thead>
-				<tbody>
+const ComparisonTable: React.StatelessComponent<Props> = ({ list, data }) => {
+	const matrix = new ComparisonMatrixObject(list, data);
+	return (
+		<table className="table table-borderless">
+			<thead>
+				<tr>
+					<td />
 					{
-						items.map((a) => (
-							<tr key={a}>
-								<th>{a}</th>
-								{
-									items.map((b) => (
-										<td key={b} className={a === b ? 'table-secondary' : ''}>
-											<ComparisonResult comparison={matrix.get(a, b)} />
-										</td>
-									))
-								}
-							</tr>
+						list.map((b) => (
+							<th key={b}>{b}</th>
 						))
 					}
-				</tbody>
-			</table>
-		);
-	}
-}
+				</tr>
+			</thead>
+			<tbody>
+				{
+					list.map((a) => (
+						<tr key={a}>
+							<th>{a}</th>
+							{
+								list.map((b) => (
+									<td key={b} className={a === b ? 'table-secondary' : ''}>
+										<ComparisonResult comparison={matrix.get(a, b)} />
+									</td>
+								))
+							}
+						</tr>
+					))
+				}
+			</tbody>
+		</table>
+	);
+};
+
+export default ComparisonTable;
