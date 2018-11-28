@@ -31,7 +31,7 @@ export class ComparisonMatrix<T> implements ComparisonStore<T> {
 		if (!this.has(a, b)) {
 			throw new RangeError('Could not get with these indexes');
 		}
-		return this.matrix.get(a)!.get(b)!;
+		return this.getValue(a, b);
 	}
 
 	/** Set the comparison value (not `null`) at these indexes. */
@@ -44,11 +44,19 @@ export class ComparisonMatrix<T> implements ComparisonStore<T> {
 		this.updateSingle(a, b, value);
 	}
 
+	private getValue (a: T, b: T): Comparison | null {
+		return this.matrix.get(a)!.get(b)!;
+	}
+
+	private setValue (a: T, b: T, value: Comparison): void {
+		this.matrix.get(a)!.set(b, value);
+	}
+
 	private updateSingle (a: T, b: T, value: Comparison): void {
 		const cAB = value;
 		const cBA = getOpposite(value);
-		this.matrix.get(a)!.set(b, cAB);
-		this.matrix.get(b)!.set(a, cBA);
+		this.setValue(a, b, cAB);
+		this.setValue(b, a, cBA);
 		this.updateTransitive(a, b, cAB);
 		this.updateTransitive(b, a, cBA);
 	}
