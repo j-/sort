@@ -1,0 +1,21 @@
+.ComparisonSummary {
+	display: flex;
+	flex-direction: row;
+}
+
+.ComparisonSummary-a,
+.ComparisonSummary-b {
+	flex: 1;
+}
+
+.ComparisonSummary-a {
+	text-align: right;
+}
+
+.ComparisonSummary-b {
+	text-align: left;
+}
+
+.ComparisonSummary--greater {
+	font-weight: bold;
+}

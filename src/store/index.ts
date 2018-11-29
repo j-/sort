@@ -31,6 +31,14 @@ export const isLastExplicitComparison = (state: RootReducerState, a: string, b: 
 	explicitComparisons.isLastExplicitComparison(state.explicitComparisons, a, b)
 );
 
+export const getNumberOfComparisons = (state: RootReducerState) => (
+	explicitComparisons.getNumberOfComparisons(state.explicitComparisons)
+);
+
+export const getComparisonByIndex = (state: RootReducerState, index: number) => (
+	explicitComparisons.getComparisonByIndex(state.explicitComparisons, index)
+);
+
 export const getPrompt = (state: RootReducerState) => (
 	prompt.getPrompt(state.prompt)
 );

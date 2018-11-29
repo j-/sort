@@ -2,7 +2,7 @@ import { Reducer } from 'redux';
 import { isActionSetComparison } from './actions';
 import { Comparison } from 'src/comparison';
 
-interface ComparisonRecord extends Array<string | Comparison> {
+export interface ComparisonRecord extends Array<string | Comparison> {
 	length: 3;
 	0: string;
 	1: string;
@@ -43,3 +43,11 @@ export const isLastExplicitComparison = (state: ReducerState, a: string, b: stri
 		comparison[1] === b
 	);
 };
+
+export const getNumberOfComparisons = (state: ReducerState) => (
+	state.length
+);
+
+export const getComparisonByIndex = (state: ReducerState, index: number) => (
+	state[index]
+);
