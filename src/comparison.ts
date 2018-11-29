@@ -12,3 +12,11 @@ export const getOpposite = (input: Comparison) => (
 	input === Comparison.EQ ? Comparison.EQ :
 	input === Comparison.LT ? Comparison.GT : Comparison.LT
 );
+
+/** Returns the next comparison in sequence. */
+export const toggleComparison = (input: Comparison | null) => (
+	input === Comparison.LT ? Comparison.EQ :
+	input === Comparison.EQ ? Comparison.GT :
+	input === Comparison.GT ? null :
+	Comparison.LT
+);
