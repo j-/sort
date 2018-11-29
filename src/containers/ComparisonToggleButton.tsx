@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { connect, MapStateToProps } from 'react-redux';
-import ComparisonToggleButton from '../components/ComparisonToggleButton';
+import { connect, MapStateToProps, MergeProps } from 'react-redux';
+import ComparisonToggleButton, { Props } from '../components/ComparisonToggleButton';
 import ComparisonResult from '../components/ComparisonResult';
 
 import {
@@ -41,7 +41,13 @@ const mapStateToProps: MapStateToProps<StateProps, OwnProps, RootReducerState> =
 	};
 };
 
+const mergeProps: MergeProps<StateProps, {}, OwnProps, Props> = (state, dispatch) => ({
+	...state,
+	...dispatch,
+});
+
 export default connect(
 	mapStateToProps,
 	{},
+	mergeProps,
 )(ComparisonToggleButton);
