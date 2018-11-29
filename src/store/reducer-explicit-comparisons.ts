@@ -1,13 +1,15 @@
 import { Reducer } from 'redux';
 import { isActionSetComparison } from './actions';
+import { Comparison } from 'src/comparison';
 
-interface Comparison extends Array<string> {
-	length: 2;
+interface ComparisonRecord extends Array<string | Comparison> {
+	length: 3;
 	0: string;
 	1: string;
+	2: Comparison;
 }
 
-export interface ReducerState extends Array<Comparison> {
+export interface ReducerState extends Array<ComparisonRecord> {
 
 }
 
@@ -15,10 +17,10 @@ const DEFAULT_STATE: ReducerState = [];
 
 const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
 	if (isActionSetComparison(action)) {
-		const { a, b } = action.data;
+		const { a, b, value } = action.data;
 		return [
 			...state,
-			[a, b],
+			[a, b, value],
 		];
 	}
 
