@@ -1,4 +1,4 @@
-import { Comparison, getOpposite } from './comparison';
+import { Comparison, invertComparison } from './comparison';
 
 /** @see https://github.com/leonid-shevtsov/monkeysort/blob/gh-pages/monkey_sort.js */
 export abstract class ComparisonMatrix<T> {
@@ -41,7 +41,7 @@ export abstract class ComparisonMatrix<T> {
 	}
 
 	private updateSingle (a: T, b: T, cAB: Comparison): void {
-		const cBA = getOpposite(cAB);
+		const cBA = invertComparison(cAB);
 		this.setValue(a, b, cAB);
 		this.setValue(b, a, cBA);
 		this.updateTransitive(a, b, cAB);

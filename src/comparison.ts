@@ -8,7 +8,7 @@ export enum Comparison {
 }
 
 /** Returns the opposite comparison to the one provided. */
-export const getOpposite = (input: Comparison) => (
+export const invertComparison = (input: Comparison) => (
 	input === Comparison.EQ ? Comparison.EQ :
 	input === Comparison.LT ? Comparison.GT : Comparison.LT
 );
