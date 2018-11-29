@@ -46,3 +46,22 @@ export const setComparison = (a: string, b: string, value: Comparison): ActionSe
 export const setLT = (a: string, b: string) => setComparison(a, b, Comparison.LT);
 export const setGT = (a: string, b: string) => setComparison(a, b, Comparison.GT);
 export const setEQ = (a: string, b: string) => setComparison(a, b, Comparison.EQ);
+
+/* Set prompt */
+
+export interface ActionSetPrompt extends Action<'SetPrompt'> {
+	data: {
+		prompt: string;
+	};
+}
+
+export const isActionSetPrompt = (action: Action): action is ActionSetPrompt => (
+	action.type === 'SetPrompt'
+);
+
+export const setPrompt = (prompt: string): ActionSetPrompt => ({
+	type: 'SetPrompt',
+	data: {
+		prompt,
+	},
+});

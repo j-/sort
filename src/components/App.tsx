@@ -1,5 +1,6 @@
 import * as React from 'react';
 import ComparisonTable from '../containers/ComparisonTable';
+import PromptInput from '../containers/PromptInput';
 import UnsortedList from '../containers/UnsortedList';
 
 const App: React.StatelessComponent = () => (
@@ -8,6 +9,10 @@ const App: React.StatelessComponent = () => (
 
 		<section className="mt-5 mb-5">
 			<UnsortedList />
+		</section>
+
+		<section className="mt-5 mb-5">
+			<PromptInput className="form-control" />
 		</section>
 
 		<ComparisonTable />
