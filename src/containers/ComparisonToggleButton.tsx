@@ -25,11 +25,11 @@ interface OwnProps {
 
 const mapStateToProps: MapStateToProps<StateProps, OwnProps, RootReducerState> = (state, { a, b }) => {
 	const comparison = getComparison(state, a, b);
+	const isEmpty = comparison === null;
 	const isEqual = a === b;
 	const isLast = isLastExplicitComparison(state, a, b);
 	const isExplicit = isExplicitComparison(state, a, b);
-	const isImplicit = comparison !== null && !isExplicit && !isEqual;
-	const isEmpty = !comparison;
+	const isImplicit = !isEmpty && !isExplicit && !isEqual;
 	return {
 		isEqual,
 		isLast,
