@@ -1,6 +1,5 @@
 .ComparisonTable {
-	width: 100%;
-	table-layout: fixed;
+	margin: auto;
 }
 
 .ComparisonTable th {
