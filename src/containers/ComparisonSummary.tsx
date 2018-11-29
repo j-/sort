@@ -14,9 +14,7 @@ interface OwnProps {
 }
 
 const mapStateToProps: MapStateToProps<StateProps, OwnProps, RootReducerState> = (state, { index }) => {
-	const record = getComparisonByIndex(state, index);
-	console.log(record);
-	const [a, b, comparison] = record;
+	const [a, b, comparison] = getComparisonByIndex(state, index);
 	return { a, b, comparison };
 };
 
