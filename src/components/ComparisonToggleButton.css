@@ -1,0 +1,33 @@
+.ComparisonToggleButton {
+	display: block;
+	width: 100%;
+	height: 100%;
+	appearance: none;
+	border: none;
+	padding: 0.25em;
+	font: inherit;
+}
+
+.ComparisonToggleButton:not(:disabled) {
+	cursor: pointer;
+}
+
+.ComparisonToggleButton--is-empty {
+	background-color: #fff;
+}
+
+.ComparisonToggleButton--is-equal {
+	background-color: #ddd;
+}
+
+.ComparisonToggleButton--is-implicit {
+	background-color: #eee;
+}
+
+.ComparisonToggleButton--is-explicit {
+	background-color: hsl(200, 80%, 80%);
+}
+
+.ComparisonToggleButton--is-last {
+	background-color: hsl(200, 80%, 60%);
+}

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import ComparisonTableHeaderCell from './ComparisonTableHeaderCell';
-import ComparisonTableDataCell from '../containers/ComparisonTableDataCell';
+import ComparisonToggleButton from '../containers/ComparisonToggleButton';
 import './ComparisonTable.css';
 
 export interface Props {
@@ -8,7 +8,7 @@ export interface Props {
 }
 
 const ComparisonTable: React.StatelessComponent<Props> = ({ list }) => (
-	<table className="ComparisonTable table table-borderless">
+	<table className="ComparisonTable">
 		<thead>
 			<tr>
 				<td />
@@ -30,7 +30,9 @@ const ComparisonTable: React.StatelessComponent<Props> = ({ list }) => (
 						</ComparisonTableHeaderCell>
 						{
 							list.map((b) => (
-								<ComparisonTableDataCell key={b} a={a} b={b} />
+								<td key={b}>
+									<ComparisonToggleButton a={a} b={b} />
+								</td>
 							))
 						}
 					</tr>

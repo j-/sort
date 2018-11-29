@@ -1,5 +1,10 @@
 .ComparisonTable {
+	width: 100%;
 	table-layout: fixed;
+}
+
+.ComparisonTable th {
+	padding: 0.25em;
 }
 
 .ComparisonTable td {
