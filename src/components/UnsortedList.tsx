@@ -1,19 +1,12 @@
 import * as React from 'react';
+import List from './List';
 
 export interface Props {
 	items: string[];
 }
 
 const UnsortedList: React.StatelessComponent<Props> = ({ items }) => (
-	<ul className="UnsortedList">
-		{
-			items.map((item) => (
-				<li className="UnsortedList-item" key={item}>
-					{item}
-				</li>
-			))
-		}
-	</ul>
+	<List className="UnsortedList" items={items} />
 );
 
 export default UnsortedList;

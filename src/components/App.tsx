@@ -4,6 +4,7 @@ import PromptInput from '../containers/PromptInput';
 import UnsortedList from '../containers/UnsortedList';
 import ComparisonSummaryList from '../containers/ComparisonSummaryList';
 import CompareItems from '../containers/CompareItems';
+import SortedList from '../containers/SortedList';
 
 const App: React.StatelessComponent = () => (
 	<div className="App container mt-5 mb-5">
@@ -28,6 +29,11 @@ const App: React.StatelessComponent = () => (
 			<h2 className="mt-5 mb-5">Decisions</h2>
 			<ComparisonSummaryList />
 			<CompareItems />
+		</section>
+
+		<section className="mt-5 mb-5">
+			<h2 className="mt-5 mb-5">Sorted</h2>
+			<SortedList />
 		</section>
 
 	</div>
