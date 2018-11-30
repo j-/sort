@@ -16,12 +16,12 @@ const CompareItems: React.StatelessComponent<Props> = ({
 }) => (
 	<div className="CompareItems">
 		<div className="CompareItems-container-a">
-			<Button className="btn btn-light" onClick={() => setComparison(a, b, Comparison.LT)}>
+			<Button className="btn btn-light" onClick={() => setComparison(a, b, Comparison.GT)}>
 				{a}
 			</Button>
 		</div>
 		<div className="CompareItems-container-b">
-			<Button className="btn btn-light" onClick={() => setComparison(a, b, Comparison.GT)}>
+			<Button className="btn btn-light" onClick={() => setComparison(a, b, Comparison.LT)}>
 				{b}
 			</Button>
 		</div>
