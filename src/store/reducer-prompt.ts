@@ -3,7 +3,7 @@ import { isActionSetPrompt } from './actions';
 
 export type ReducerState = string;
 
-const DEFAULT_STATE: ReducerState = 'Which is greater?';
+const DEFAULT_STATE: ReducerState = 'Which one is better?';
 
 const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
 	if (isActionSetPrompt(action)) {
