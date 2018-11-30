@@ -15,8 +15,8 @@ it('stops when comparison matrix is incomplete', () => {
 it('returns when comparison matrix is complete', () => {
 	const items = ['c', 'a', 'b'];
 	const matrix = new ComparisonMatrixMap(items);
-	matrix.set('a', 'b', Comparison.GT);
-	matrix.set('b', 'c', Comparison.GT);
+	matrix.set('a', 'b', Comparison.LT);
+	matrix.set('b', 'c', Comparison.LT);
 	const manager = new SortManagerQuicksort(matrix);
 	const result = manager.sort();
 	expect(result).toEqual(['a', 'b', 'c']);

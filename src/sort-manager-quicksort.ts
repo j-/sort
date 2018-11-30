@@ -44,11 +44,11 @@ export class SortManagerQuicksort<T> extends SortManager<T> {
 		while (true) {
 			do {
 				i = i + 1;
-			} while (this.gt(A[i], pivot));
+			} while (this.lt(A[i], pivot));
 
 			do {
 				j = j - 1;
-			} while (this.lt(A[j], pivot));
+			} while (this.gt(A[j], pivot));
 
 			if (i >= j) {
 				return j;
