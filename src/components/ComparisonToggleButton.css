@@ -31,3 +31,7 @@
 .ComparisonToggleButton--is-last {
 	background-color: hsl(200, 80%, 60%);
 }
+
+.ComparisonToggleButton-inner {
+	display: block;
+}

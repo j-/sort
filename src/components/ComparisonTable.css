@@ -9,3 +9,21 @@
 .ComparisonTable td {
 	text-align: center;
 }
+
+/* Rotations */
+
+.ComparisonTable {
+	/* Rotate entire table */
+	transform: rotate(0.125turn);
+}
+
+.ComparisonTable .ComparisonTableHeaderCell--vertical .ComparisonTableHeaderCell-text {
+	/* Right side heading text */
+	/* TODO: Flex alignment no longer respected when transforming */
+	transform: rotate(0.5turn);
+}
+
+.ComparisonTable .ComparisonToggleButton-inner {
+	/* Comparison symbols */
+	transform: rotate(-0.125turn);
+}

@@ -18,6 +18,7 @@ const ComparisonToggleButton: React.StatelessComponent<Props> = ({
 	isImplicit,
 	isEmpty,
 	className,
+	children,
 	...props
 }) => (
 	<Button
@@ -29,7 +30,11 @@ const ComparisonToggleButton: React.StatelessComponent<Props> = ({
 			'ComparisonToggleButton--is-empty': isEmpty,
 		}, className)}
 		{...props}
-	/>
+	>
+		<span className="ComparisonToggleButton-inner">
+			{children}
+		</span>
+	</Button>
 );
 
 export default ComparisonToggleButton;
