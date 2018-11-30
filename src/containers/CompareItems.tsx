@@ -1,6 +1,8 @@
 import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';
 import MaybeCompareItems from '../components/MaybeCompareItems';
+import { Comparison } from '../comparison';
 import { RootReducerState, getNextA, getNextB } from '../store';
+import { setComparison } from '../store/actions';
 
 interface StateProps {
 	a: string | null;
@@ -8,8 +10,7 @@ interface StateProps {
 }
 
 interface DispatchProps {
-	onClickA: () => void;
-	onClickB: () => void;
+	setComparison: (a: string, b: string, value: Comparison) => void;
 }
 
 const mapStateToProps: MapStateToProps<StateProps, {}, RootReducerState> = (state) => ({
@@ -17,10 +18,8 @@ const mapStateToProps: MapStateToProps<StateProps, {}, RootReducerState> = (stat
 	b: getNextB(state),
 });
 
-const mapDispatchToProps: MapDispatchToProps<DispatchProps, {}> = (dispatch) => ({
-	// TODO: Implement these
-	onClickA: () => undefined,
-	onClickB: () => undefined,
+const mapDispatchToProps: MapDispatchToProps<DispatchProps, {}> = ({
+	setComparison,
 });
 
 export default connect(

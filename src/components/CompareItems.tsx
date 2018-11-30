@@ -1,28 +1,27 @@
 import * as React from 'react';
 import Button from './Button';
+import { Comparison } from '../comparison';
 import './CompareItems.css';
 
 export interface Props {
 	a: string;
 	b: string;
-	onClickA: () => void;
-	onClickB: () => void;
+	setComparison: (a: string, b: string, value: Comparison) => void;
 }
 
 const CompareItems: React.StatelessComponent<Props> = ({
 	a,
 	b,
-	onClickA,
-	onClickB,
+	setComparison,
 }) => (
 	<div className="CompareItems">
 		<div className="CompareItems-container-a">
-			<Button className="btn btn-light" onClick={onClickA}>
+			<Button className="btn btn-light" onClick={() => setComparison(a, b, Comparison.LT)}>
 				{a}
 			</Button>
 		</div>
 		<div className="CompareItems-container-b">
-			<Button className="btn btn-light" onClick={onClickB}>
+			<Button className="btn btn-light" onClick={() => setComparison(a, b, Comparison.GT)}>
 				{b}
 			</Button>
 		</div>
