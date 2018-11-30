@@ -33,6 +33,7 @@ const App: React.StatelessComponent = () => (
 
 		<section className="mt-5 mb-5">
 			<h2 className="mt-5 mb-5">Sorted</h2>
+			<p>(In ascending order)</p>
 			<SortedList />
 		</section>
 
