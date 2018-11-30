@@ -8,6 +8,18 @@ export abstract class ComparisonMatrix<T> {
 	protected abstract getValue (a: T, b: T): Comparison | null;
 	protected abstract setValue (a: T, b: T, value: Comparison): void;
 
+	public static isComplete <T>(matrix: ComparisonMatrix<T>) {
+		const items = matrix.getItems();
+		for (let a of items) {
+			for (let b of items) {
+				if (matrix.get(a, b) === null) {
+					return false;
+				}
+			}
+		}
+		return true;
+	}
+
 	constructor (items: T[]) {
 		this.items = items;
 	}

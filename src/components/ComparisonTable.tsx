@@ -1,14 +1,16 @@
 import * as React from 'react';
+import * as classNames from 'classnames';
 import ComparisonTableHeaderCell from './ComparisonTableHeaderCell';
 import ComparisonToggleButton from '../containers/ComparisonToggleButton';
 import './ComparisonTable.css';
 
 export interface Props {
 	list: string[];
+	complete: boolean;
 }
 
-const ComparisonTable: React.StatelessComponent<Props> = ({ list }) => (
-	<table className="ComparisonTable">
+const ComparisonTable: React.StatelessComponent<Props> = ({ list, complete }) => (
+	<table className={classNames('ComparisonTable', complete && 'ComparisonTable--complete')}>
 		<thead>
 			<tr>
 				<td />

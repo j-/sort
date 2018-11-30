@@ -23,6 +23,10 @@ export const getComparison = (state: RootReducerState, a: string, b: string) => 
 	comparisonData.getComparison(state.comparisonData, a, b)
 );
 
+export const isComplete = (state: RootReducerState) => (
+	comparisonData.isComplete(state.comparisonData)
+);
+
 export const isExplicitComparison = (state: RootReducerState, a: string, b: string) => (
 	explicitComparisons.isExplicitComparison(state.explicitComparisons, a, b)
 );

@@ -6,11 +6,13 @@ import { ComparisonMatrixObject } from '../comparison-matrix-object';
 export interface ReducerState {
 	unsortedList: string[];
 	comparisonData: ComparisonData;
+	isComplete: boolean;
 }
 
 const DEFAULT_STATE: ReducerState = {
 	unsortedList: [],
 	comparisonData: {},
+	isComplete: false,
 };
 
 const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
@@ -20,6 +22,7 @@ const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
 			...state,
 			unsortedList: list,
 			comparisonData: initialize(list),
+			isComplete: false,
 		};
 	}
 
@@ -29,9 +32,11 @@ const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
 		const data = state.comparisonData;
 		const matrix = new ComparisonMatrixObject(list, data);
 		matrix.set(a, b, value);
+		const isComplete = ComparisonMatrixObject.isComplete(matrix);
 		return {
 			...state,
 			comparisonData: matrix.getData(),
+			isComplete,
 		};
 	}
 
@@ -46,4 +51,8 @@ export const getUnsortedListItems = (state: ReducerState) => (
 
 export const getComparison = (state: ReducerState, a: string, b: string) => (
 	state.comparisonData[a][b]
+);
+
+export const isComplete = (state: ReducerState) => (
+	state.isComplete
 );

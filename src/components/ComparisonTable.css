@@ -6,8 +6,14 @@
 	padding: 0.25em;
 }
 
-.ComparisonTable td {
+.ComparisonTable tbody td {
 	text-align: center;
+	border: 1px solid #aaa;
+	padding: 0;
+}
+
+.ComparisonTable--complete tbody td {
+	border-color: #09c;
 }
 
 /* Rotations */
