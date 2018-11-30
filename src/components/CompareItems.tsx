@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Button from './Button';
 import { Comparison } from '../comparison';
-import './CompareItems.css';
 
 export interface Props {
 	a: string;
@@ -15,14 +14,30 @@ const CompareItems: React.StatelessComponent<Props> = ({
 	setComparison,
 }) => (
 	<div className="CompareItems">
-		<div className="CompareItems-container-a">
-			<Button className="btn btn-light" onClick={() => setComparison(a, b, Comparison.GT)}>
+		<div className="CompareItems-container CompareItems-container-a mb-2">
+			<Button
+				className="CompareItems-button btn btn-block btn-outline-secondary btn-lg pt-3 pb-3"
+				onClick={() => setComparison(a, b, Comparison.GT)}
+			>
 				{a}
 			</Button>
 		</div>
-		<div className="CompareItems-container-b">
-			<Button className="btn btn-light" onClick={() => setComparison(a, b, Comparison.LT)}>
+
+		<div className="CompareItems-container CompareItems-container-b mb-2">
+			<Button
+				className="CompareItems-button btn btn-block btn-outline-secondary btn-lg pt-3 pb-3"
+				onClick={() => setComparison(a, b, Comparison.LT)}
+			>
 				{b}
+			</Button>
+		</div>
+
+		<div className="CompareItems-container CompareItems-container-dont-care mb-2">
+			<Button
+				className="CompareItems-button btn btn-block btn-outline-secondary"
+				onClick={() => setComparison(a, b, Comparison.EQ)}
+			>
+				Don't care
 			</Button>
 		</div>
 	</div>
