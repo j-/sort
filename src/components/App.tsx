@@ -3,6 +3,7 @@ import ComparisonTable from '../containers/ComparisonTable';
 import PromptInput from '../containers/PromptInput';
 import UnsortedList from '../containers/UnsortedList';
 import ComparisonSummaryList from '../containers/ComparisonSummaryList';
+import PromptParagraph from '../containers/PromptParagraph';
 import CompareItems from '../containers/CompareItems';
 import SortedList from '../containers/SortedList';
 
@@ -28,7 +29,12 @@ const App: React.StatelessComponent = () => (
 		<section className="mt-5 mb-5">
 			<h2 className="mt-5 mb-5">Decisions</h2>
 			<ComparisonSummaryList />
+
+			<br />
+
+			<PromptParagraph />
 			<CompareItems />
+
 		</section>
 
 		<section className="mt-5 mb-5">
