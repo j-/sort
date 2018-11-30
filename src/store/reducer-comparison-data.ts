@@ -25,13 +25,24 @@ const DEFAULT_STATE: ReducerState = {
 const reducer: Reducer<ReducerState> = (state = DEFAULT_STATE, action) => {
 	if (isActionSetList(action)) {
 		const { list } = action.data;
+		const data = initialize(list);
+		const matrix = new ComparisonMatrixObject(list, data);
+		const manager = new SortManagerQuicksort(matrix);
+		const sortedList = manager.sort();
+		let nextA = null;
+		let nextB = null;
+		if (!sortedList) {
+			nextA = manager.lastA;
+			nextB = manager.lastB;
+		}
 		return {
 			...state,
 			unsortedList: list,
-			comparisonData: initialize(list),
+			comparisonData: data,
 			isComplete: false,
-			nextA: null,
-			nextB: null,
+			sortedList,
+			nextA,
+			nextB,
 		};
 	}
 
