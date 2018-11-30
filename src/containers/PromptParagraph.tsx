@@ -1,8 +1,8 @@
 import { connect, MapStateToProps } from 'react-redux';
-import P, { Props } from '../components/P';
+import Paragraph, { Props as P } from '../components/Paragraph';
 import { RootReducerState, getPrompt } from '../store';
 
-const mapStateToProps: MapStateToProps<Props, Props, RootReducerState> = (state) => ({
+const mapStateToProps: MapStateToProps<P, P, RootReducerState> = (state) => ({
 	children: getPrompt(state),
 	className: 'text-center',
 });
@@ -10,4 +10,4 @@ const mapStateToProps: MapStateToProps<Props, Props, RootReducerState> = (state)
 export default connect(
 	mapStateToProps,
 	{},
-)(P);
+)(Paragraph);

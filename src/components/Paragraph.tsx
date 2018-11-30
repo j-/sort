@@ -4,8 +4,8 @@ export interface Props extends React.HTMLAttributes<HTMLParagraphElement> {
 
 }
 
-const P: React.StatelessComponent<Props> = (props) => (
+const Paragraph: React.StatelessComponent<Props> = (props) => (
 	<p {...props} />
 );
 
-export default P;
+export default Paragraph;
