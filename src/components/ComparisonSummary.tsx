@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import { Comparison } from 'src/comparison';
+import { Comparison } from '../comparison';
 import './ComparisonSummary.css';
 import ComparisonResult from './ComparisonResult';
 

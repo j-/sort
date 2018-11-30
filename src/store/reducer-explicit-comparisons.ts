@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
 import { isActionSetComparison } from './actions';
-import { Comparison } from 'src/comparison';
+import { Comparison } from '../comparison';
 
 export interface ComparisonRecord extends Array<string | Comparison> {
 	length: 3;
