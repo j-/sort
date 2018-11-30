@@ -27,6 +27,22 @@ export const isComplete = (state: RootReducerState) => (
 	comparisonData.isComplete(state.comparisonData)
 );
 
+export const getNextA = (state: RootReducerState) => (
+	comparisonData.getNextA(state.comparisonData)
+);
+
+export const getNextB = (state: RootReducerState) => (
+	comparisonData.getNextB(state.comparisonData)
+);
+
+export const isSorted = (state: RootReducerState) => (
+	comparisonData.isSorted(state.comparisonData)
+);
+
+export const getSortedListItems = (state: RootReducerState) => (
+	comparisonData.getSortedListItems(state.comparisonData)
+);
+
 export const isExplicitComparison = (state: RootReducerState, a: string, b: string) => (
 	explicitComparisons.isExplicitComparison(state.explicitComparisons, a, b)
 );
